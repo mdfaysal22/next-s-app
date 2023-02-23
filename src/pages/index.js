@@ -1,14 +1,12 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
     <>
-      <h1 className='text-3xl text-red-500'>Hello World</h1>
+      <button className='m-10 btn-sm btn btn-primary btn-outline font-semibold'>Hello World</button>
+      <button className="btn btn-secondary btn-outline btn-sm mr-10">Click me</button>
+      <button className="btn btn-info btn-outline btn-sm">click me 2</button>
+      <button className="btn btn-accent btn-outline btn-sm ml-10">click me 03</button>
     </>
   )
 }
