@@ -1,12 +1,33 @@
-
-
-export default function Home() {
+export default function Home({ posts }) {
+  console.log(posts);
   return (
     <>
-      <button className='m-10 btn-sm btn btn-primary btn-outline font-semibold'>Hello World</button>
-      <button className="btn btn-secondary btn-outline btn-sm mr-10">Click me</button>
-      <button className="btn btn-info btn-outline btn-sm">click me 2</button>
-      <button className="btn btn-accent btn-outline btn-sm ml-10">click me 03</button>
+      
+      <div className="grid grid-cols-3 gap-5 m-10">
+      {posts.map((post) => {
+        return (
+          <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card-body">
+              <h2 className="card-title">{post.title.slice(0,20)}</h2>
+              <p>{post.body.slice(0, 100)}</p>
+              <div className="card-actions justify-start">
+                <button className="btn btn-primary">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+      </div>
     </>
-  )
+  );
+}
+
+export async function getStaticProps() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await res.json();
+  return {
+    props: {
+      posts: data,
+    },
+  };
 }
